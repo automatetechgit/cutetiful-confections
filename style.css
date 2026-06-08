@@ -79,7 +79,7 @@ body {
   line-height: 0;
 }
 .nav-logo-img {
-  height: 60px;
+  height: 120px;
   width: auto;
   display: block;
 }
@@ -165,7 +165,7 @@ body {
   margin-bottom: 12px;
 }
 .hero-logo {
-  max-height: 180px;
+  max-height: 400px;
   width: auto;
   display: inline-block;
   filter: drop-shadow(0 2px 8px rgba(236, 72, 153, 0.15));
