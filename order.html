@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order — Cutetiful Confections</title>
+  <meta name="description" content="Place your order for handcrafted organic desserts from Cutetiful Confections.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .page-hero {
+      padding: 140px 24px 60px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--pink-50) 0%, var(--bg) 100%);
+    }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--pink-600);
+      margin-bottom: 8px;
+    }
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .order-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .menu-category {
+      margin-bottom: 48px;
+    }
+    .menu-category:last-child {
+      margin-bottom: 0;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--pink-200);
+    }
+    .category-header h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--purple-600);
+    }
+    .category-icon {
+      font-size: 1.8rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .price-item {
+      background: white;
+      border: 1px solid var(--pink-100);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+    .price-item:hover {
+      border-color: var(--pink-300);
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+
+    .price-item .item-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .price-item .item-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+    .price-item .item-size {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .price-item .item-price {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--pink-600);
+      white-space: nowrap;
+    }
+
+    .flavor-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    .flavor-tag {
+      background: var(--purple-50);
+      color: var(--purple-600);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--purple-200);
+    }
+    .flavor-tag.cupcake { background: var(--pink-50); color: var(--pink-600); border-color: var(--pink-200); }
+    .flavor-tag.cookie { background: #fffbeb; color: #d97706; border-color: #fde68a; }
+    .flavor-tag.cake { background: #fdf2f8; color: #be185d; border-color: #fbcfe8; }
+    .flavor-tag.loaf { background: #fef3c7; color: #a16207; border-color: #fde68a; }
+    .flavor-tag.roll { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+
+    .category-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .order-footer-cta {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px;
+      background: linear-gradient(135deg, var(--pink-50), var(--purple-50));
+      border-radius: var(--radius);
+    }
+    .order-footer-cta h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--pink-600);
+      margin-bottom: 12px;
+    }
+    .order-footer-cta p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .order-footer-cta .btn-order {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--pink-500);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+    }
+    .order-footer-cta .btn-order:hover {
+      background: var(--pink-600);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 600px) {
+      .page-hero h1 { font-size: 2.2rem; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .category-header h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><img src="logosmaller.png" alt="Cutetiful Confections" class="nav-logo-img"></a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#flavors">Menu</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="order.html" class="nav-cta">Order Now</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <h1>Place Your Order</h1>
+    <p>Pick your favorites and we'll handle the rest. All items handcrafted to order.</p>
+  </section>
+
+  <!-- Menu & Pricing -->
+  <div class="order-section">
+
+    <!-- Cupcakes -->
+    <div class="menu-category">
+      <div class="category-header">
+        <span class="category-icon">🧁</span>
+        <h2>Cupcakes</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Half Dozen</span>
+            <span class="item-size">6 cupcakes</span>
+          </div>
+          <span class="item-price">$15</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Dozen</span>
+            <span class="item-size">12 cupcakes</span>
+          </div>
+          <span class="item-price">$30</span>
+        </div>
+      </div>
+      <div class="flavor-tags">
+        <span class="flavor-tag cupcake">Red Velvet</span>
+        <span class="flavor-tag cupcake">Carrot</span>
+        <span class="flavor-tag cupcake">Cookies n Crème</span>
+        <span class="flavor-tag cupcake">Vanilla Bean</span>
+        <span class="flavor-tag cupcake">Custom</span>
+        <span class="flavor-tag cupcake">Custom/Event</span>
+        <span class="flavor-tag cupcake">Birthday</span>
+      </div>
+    </div>
+
+    <!-- Cakes -->
+    <div class="menu-category">
+      <div class="category-header">
+        <span class="category-icon">🎂</span>
+        <h2>Cakes</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">4" Round</span>
+            <span class="item-size">Serves 2-4</span>
+          </div>
+          <span class="item-price">$25</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">6" Round</span>
+            <span class="item-size">Serves 6-8</span>
+          </div>
+          <span class="item-price">$35</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">8" Round</span>
+            <span class="item-size">Serves 10-14</span>
+          </div>
+          <span class="item-price">$45</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">10" Round</span>
+            <span class="item-size">Serves 16-20</span>
+          </div>
+          <span class="item-price">$55</span>
+        </div>
+      </div>
+      <div class="flavor-tags">
+        <span class="flavor-tag cake">Red Velvet</span>
+        <span class="flavor-tag cake">Carrot</span>
+        <span class="flavor-tag cake">Cookies n Crème</span>
+        <span class="flavor-tag cake">Vanilla Bean</span>
+        <span class="flavor-tag cake">Custom</span>
+        <span class="flavor-tag cake">Custom/Event</span>
+        <span class="flavor-tag cake">Birthday</span>
+      </div>
+    </div>
+
+    <!-- Cake Pops -->
+    <div class="menu-category">
+      <div class="category-header">
+        <span class="category-icon">🍭</span>
+        <h2>Cake Pops</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">12 Pack</span>
+            <span class="item-size">Assorted or custom</span>
+          </div>
+          <span class="item-price">$14</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">24 Pack</span>
+            <span class="item-size">Assorted or custom</span>
+          </div>
+          <span class="item-price">$26</span>
+        </div>
+      </div>
+      <div class="flavor-tags">
+        <span class="flavor-tag cupcake">Red Velvet</span>
+        <span class="flavor-tag cupcake">Carrot</span>
+        <span class="flavor-tag cupcake">Cookies n Crème</span>
+        <span class="flavor-tag cupcake">Vanilla Bean</span>
+        <span class="flavor-tag cupcake">Custom</span>
+        <span class="flavor-tag cupcake">Birthday</span>
+      </div>
+    </div>
+
+    <!-- Cookies -->
+    <div class="menu-category">
+      <div class="category-header">
+        <span class="category-icon">🍪</span>
+        <h2>Cookies</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Half Dozen</span>
+            <span class="item-size">6 cookies</span>
+          </div>
+          <span class="item-price">$14</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Dozen</span>
+            <span class="item-size">12 cookies</span>
+          </div>
+          <span class="item-price">$24</span>
+        </div>
+      </div>
+      <div class="flavor-tags">
+        <span class="flavor-tag cookie">Chocolate Chip</span>
+        <span class="flavor-tag cookie">S'mores</span>
+        <span class="flavor-tag cookie">Oatmeal</span>
+      </div>
+    </div>
+
+    <!-- Brownies -->
+    <div class="menu-category">
+      <div class="category-header">
+        <span class="category-icon">🍫</span>
+        <h2>Brownies</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Half Dozen</span>
+            <span class="item-size">6 brownies</span>
+          </div>
+          <span class="item-price">$18</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Dozen</span>
+            <span class="item-size">12 brownies</span>
+          </div>
+          <span class="item-price">$32</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loafs -->
+    <div class="menu-category">
+      <div class="category-header">
+        <span class="category-icon">🍌</span>
+        <h2>Loafs</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Banana Bread</span>
+            <span class="item-size">Full loaf</span>
+          </div>
+          <span class="item-price">$26</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rolls -->
+    <div class="menu-category">
+      <div class="category-header">
+        <span class="category-icon">🌀</span>
+        <h2>Rolls</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Half Dozen</span>
+            <span class="item-size">6 cinnamon rolls</span>
+          </div>
+          <span class="item-price">$15</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">Dozen</span>
+            <span class="item-size">12 cinnamon rolls</span>
+          </div>
+          <span class="item-price">$28</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cheesecake -->
+    <div class="menu-category">
+      <div class="category-header">
+        <span class="category-icon">🍰</span>
+        <h2>Cheesecake</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">6" Round</span>
+            <span class="item-size">Serves 4-6</span>
+          </div>
+          <span class="item-price">$30</span>
+        </div>
+        <div class="price-item">
+          <div class="item-info">
+            <span class="item-name">9" Round</span>
+            <span class="item-size">Serves 10-12</span>
+          </div>
+          <span class="item-price">$45</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="order-footer-cta">
+      <h3>Ready to Order?</h3>
+      <p>Reach out and we'll make your custom order happen.</p>
+      <a href="mailto:cutetifulbrand@gmail.com" class="btn-order">✉️ Email Your Order</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>Cutetiful<span>Confections</span></h3>
+        <p>Handcrafted organic gourmet desserts made with love.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="index.html#flavors">Menu</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#gallery">Gallery</a>
+        <a href="order.html">Order</a>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Facebook">👍</a>
+          <a href="#" aria-label="TikTok">🎵</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Cutetiful Confections. Made with 🧁</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
